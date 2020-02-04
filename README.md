@@ -1,0 +1,2 @@
+# GanFromScratch
+A simple GAN
