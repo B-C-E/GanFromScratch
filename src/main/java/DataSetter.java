@@ -10,7 +10,7 @@ public class DataSetter
     {
         try
         {
-            File folder = new File(System.getProperty("user.home") + "/Downloads/New/");
+            File folder = new File(System.getProperty("user.home") + "/Downloads/TrainingFiles/");
             File[] listOfFiles = folder.listFiles();
 
             float[][]dataSet = new float[listOfFiles.length][width*height*3];

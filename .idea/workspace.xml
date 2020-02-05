@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e5bcac9-bc99-406b-9a9e-0e365c9e82e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GanMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GanMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GanMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +124,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1580839997189" />
+    <state x="488" y="74" key="#com.intellij.ide.util.MemberChooser" timestamp="1580867293467">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="74" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1580867293467" />
     <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1580840288888">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -154,9 +156,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580856345781" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1580855570745">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1580866289451">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1580855570745" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1580866289451" />
   </component>
 </project>
