@@ -4,7 +4,9 @@ import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.Updater;
 import org.deeplearning4j.nn.conf.layers.*;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
+import org.deeplearning4j.optimize.listeners.PerformanceListener;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.activations.impl.ActivationLReLU;
 import org.nd4j.linalg.activations.impl.ActivationSigmoid;
@@ -29,9 +31,14 @@ public class AutoMain
     //Saving, loading, etc
 
     ///////////////////////////////////////////////////////////////////////////////////////
-    //AHH /////////////////////////////////////////////////////
+    //Training Here: /////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
+    public static void main(String args[])
+    {
+        MultiLayerNetwork auto = new MultiLayerNetwork(autoEncoderConfig());
+        auto.setListeners(new PerformanceListener(1, true));
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////
     //The Setup for our network goes here /////////////////////////////////////////////////////
