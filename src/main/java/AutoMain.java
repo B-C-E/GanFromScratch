@@ -1,8 +1,16 @@
+import org.deeplearning4j.nn.api.OptimizationAlgorithm;
+import org.deeplearning4j.nn.conf.GradientNormalization;
+import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
+import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.conf.Updater;
 import org.deeplearning4j.nn.conf.layers.*;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.activations.impl.ActivationLReLU;
+import org.nd4j.linalg.activations.impl.ActivationSigmoid;
+import org.nd4j.linalg.activations.impl.ActivationTanH;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.learning.config.AdaGrad;
 import org.nd4j.linalg.learning.config.IUpdater;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
@@ -12,11 +20,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class GanMain
+public class AutoMain
 {
 
     //@Todo
-    //Actual GAN networks
+    //Actual AutoEncoding network
     //Displayer
     //Saving, loading, etc
 
@@ -31,19 +39,37 @@ public class GanMain
 
     //Associated Variables
     private static int dimensions = 12;//how many dimensions are we compressing to?
+    private static int seed = 735;
+    private static final IUpdater UPDATER = AdaGrad.builder().learningRate(0.05).build();//AdaGrad will be updating our network for us, using momentum and the like
+
 
     //This is a method for visual clarity
     private static Layer[] autoEncoderLayers(IUpdater updater) {
         return new Layer[] {
                 new DenseLayer.Builder().nIn(width*height*3).nOut((width*height)/2).updater(updater).build(),
                 new DenseLayer.Builder().nIn((width*height)/2).nOut(dimensions).updater(updater).build(),
+                new ActivationLayer.Builder(new ActivationTanH()).build(),//this should contrain the values to between -1 and 1
                 new DenseLayer.Builder().nIn(dimensions).nOut((width*height)/2).updater(updater).build(),
-                new OutputLayer.Builder(LossFunctions.LossFunction.MSE).nIn(width*height/2).nOut(width*height*3).activation(Activation.IDENTITY.updater(updater).build()
+                new OutputLayer.Builder(LossFunctions.LossFunction.MSE).nIn(width*height/2).nOut(width*height*3).activation(Activation.IDENTITY).updater(updater).build()
 
                 //LossFunctions.LossFunction.MSE -- Uses the mean square loss function
                 //Activation - IDENTITY -- Activations can be used to constrain data within bounds. IDENTITY does nothing
 
         };
+    }
+
+
+    private static MultiLayerConfiguration autoEncoderConfig()
+    {
+        return new NeuralNetConfiguration.Builder()
+                .seed(seed)
+                .updater(UPDATER)//this is a static variable, see above
+                .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
+                .gradientNormalization(GradientNormalization.RenormalizeL2PerLayer)
+                .weightInit(WeightInit.RELU)//what kind of random does it start with?
+                .activation(Activation.IDENTITY)//does nothing
+                .list(autoEncoderLayers(UPDATER))
+                .build();
     }
 
 
